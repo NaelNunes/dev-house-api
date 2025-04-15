@@ -1,10 +1,12 @@
-const express = require('express');
-const routes = require('./routes');
-
+import routes from './routes';
+import mongoose from 'mongoose';
+import express from 'express';
 class App{
 
   constructor(){
     this.server = express();
+
+    mongoose.connect('mongodb+srv://devhouse:devhouse@devhouse.vebvh.mongodb.net/?retryWrites=true&w=majority&appName=devhouse')
 
     this.middlewares();
     this.routes();
@@ -20,4 +22,4 @@ class App{
 
 }
 
-module.exports = new App().server;
+export default new App().server;
